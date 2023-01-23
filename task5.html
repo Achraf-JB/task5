@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Interface Admin</h1>
+    <input  id ="file" type="file">
+    <input id ="text" type="text">
+    <button>poster</button>
+    <div id="img"></div>
+    <script>
+    let liste = document.querySelector("#img")
+    let input1 = document.querySelector("#file").value;
+    let input2 = document.querySelector("#text")
+    let button = document.querySelector("button")
+    button.addEventListener("click",ajouter)
+
+     function ajouter() {
+        if (isInputEmpty()) {
+          alert("Input empty, please type something !");
+          return;
+        }
+        let div = document.createElement("div");
+        let span = document.createElement("span");
+        let button = document.createElement("button");
+        let  img = document.createElement("img");
+        button.addEventListener("click", supprimer);
+        button.innerText = "supprimer";
+        button.id = "button1";
+        img.src = input1;
+        img.width = "20px";
+        img.height = "20px";
+        img.alt = "img";
+        span.innerHTML = "TITRE:"+ input2.value;
+        div.appendChild(button);
+        div.appendChild(span);
+        div.appendChild(img);
+        
+        liste.appendChild(div);
+        input1.value = "";
+        input2.value = "";
+        }
+        function supprimer(e){
+        let id= e.target.parentElement.id;
+        let elementasupp = document.getElementById(id);
+        elementasupp.remove();
+      }
+        function isInputEmpty() {
+        if (input2.value == "") {
+          return true;
+        }
+        return false;
+      }
+      input.addEventListener("keypress", function (e) {
+        if (e.key == "Enter") {
+          addTodo();
+        }})
+    </script>
+</body>
+</html>
